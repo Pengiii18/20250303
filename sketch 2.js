@@ -1,4 +1,4 @@
-let input, slider, button, dropdown;
+let input, slider, button, dropdown, iframe;
 let isBouncing = false;
 let offsets = [];
 
@@ -29,13 +29,19 @@ function setup() {
   
   dropdown = createSelect(); // 產生一個下拉式選單
   dropdown.position(690, 10); // 設置下拉式選單位置
-  dropdown.option('第一周');
-  dropdown.option('第二周');
-  dropdown.option('第三周');
+  dropdown.option('第三周作品');
+  dropdown.option('教育科技學系');
+  dropdown.option('第三周講義');
   dropdown.style('font-size', '24px'); // 調整選單內的文字大小
   dropdown.style('width', '100px'); // 設置選單寬度
   dropdown.style('height', '40px'); // 設置選單高度
   dropdown.changed(handleDropdownChange); // 設置下拉式選單改變事件
+  
+  iframe = createElement('iframe'); // 產生一個 iframe
+  iframe.position(100, 100); // 設置 iframe 位置
+  iframe.size(windowWidth - 200, windowHeight - 200); // 設置 iframe 大小
+  iframe.style('border', 'none'); // 移除邊框
+  iframe.hide(); // 初始隱藏 iframe
 }
 
 function draw() {
@@ -66,15 +72,17 @@ function toggleBounce() {
 
 function handleDropdownChange() {
   let selected = dropdown.value();
-  if (selected === '第一周') {
-    window.open('https://www.tku.edu.tw/', '_blank');
-  } else if (selected === '第二周') {
-    window.open('https://www.et.tku.edu.tw/', '_blank');
-  } else if (selected === '第三周') {
-    window.open('https://hackmd.io/@YNTBtVfdQV2_UOEfSoxNPg/rJ1REKMoyl', '_blank');
+  iframe.show(); // 顯示 iframe
+  if (selected === '第三周作品') {
+    iframe.attribute('src', 'https://pengiii18.github.io/20250303/');
+  } else if (selected === '教育科技學系') {
+    iframe.attribute('src', 'https://www.et.tku.edu.tw/');
+  } else if (selected === '第三周講義') {
+    iframe.attribute('src', 'https://hackmd.io/@YNTBtVfdQV2_UOEfSoxNPg/rJ1REKMoyl');
   }
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight); // 當視窗大小改變時，調整畫布大小
+  iframe.size(windowWidth - 200, windowHeight - 200); // 調整 iframe 大小
 }
