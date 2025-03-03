@@ -29,9 +29,9 @@ function setup() {
   
   dropdown = createSelect(); // 產生一個下拉式選單
   dropdown.position(690, 10); // 設置下拉式選單位置
-  dropdown.option('淡江大學');
+  dropdown.option('第三周作品');
   dropdown.option('教育科技學系');
-  dropdown.option('HackMD');
+  dropdown.option('第三周講義');
   dropdown.style('font-size', '24px'); // 調整選單內的文字大小
   dropdown.style('width', '100px'); // 設置選單寬度
   dropdown.style('height', '40px'); // 設置選單高度
@@ -73,11 +73,11 @@ function toggleBounce() {
 function handleDropdownChange() {
   let selected = dropdown.value();
   iframe.show(); // 顯示 iframe
-  if (selected === '淡江大學') {
-    iframe.attribute('src', 'https://www.tku.edu.tw/');
+  if (selected === '第三周作品') {
+    iframe.attribute('src', 'https://pengiii18.github.io/20250303/');
   } else if (selected === '教育科技學系') {
     iframe.attribute('src', 'https://www.et.tku.edu.tw/');
-  } else if (selected === 'HackMD') {
+  } else if (selected === '第三周講義') {
     iframe.attribute('src', 'https://hackmd.io/@YNTBtVfdQV2_UOEfSoxNPg/rJ1REKMoyl');
   }
 }
